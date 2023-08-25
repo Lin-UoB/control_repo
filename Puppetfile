@@ -5,4 +5,4 @@ mod 'samuelson/dockeragent'
 mod 'puppetlabs/docker'
 mod 'ghoneycutt-ssh'
 mod 'puppetlabs/apt'
-mod 'puppetlabs-docker'
+
