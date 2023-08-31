@@ -12,7 +12,18 @@ class minecraft {
   }
   file {'/etc/systemd/system/minecraft.service':
     ensure => file,
-    source => 'puppet:///modules/minecraft/files/minecraft.service',
+    content => "[Unit]
+                Description=Minecraft Server
+
+                Wants=network.target
+                After=network.target
+
+                [Service]
+                WorkingDirectory=/opt/minecraft
+                ExecStart=/usr/bin/java -Xmx1024M -Xms1024M -jar server.jar nogui
+
+                [Install]
+                WantedBy=multi-user.target",
   }
   service {'minecraft':
     ensure => running,
